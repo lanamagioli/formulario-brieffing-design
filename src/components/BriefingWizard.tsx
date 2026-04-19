@@ -90,7 +90,7 @@ export default function BriefingWizard({ userName, userProfession }: BriefingWiz
               return (
                 <li
                   key={step.id}
-                  className={`flex items-center gap-4 transition-all ${
+                  className={`relative flex items-center gap-4 transition-all ${
                     isCompleted ? 'cursor-pointer hover:opacity-80' : ''
                   }`}
                   onClick={() => handleStepClick(index)}
@@ -106,6 +106,13 @@ export default function BriefingWizard({ userName, userProfession }: BriefingWiz
                   >
                     {isCompleted ? <Check size={20} /> : <span className="text-sm font-medium">{index + 1}</span>}
                   </div>
+                  {index < WIZARD_STEPS.length - 1 && (
+                    <div
+                      className={`absolute left-5 top-10 h-8 w-0.5 -translate-x-1/2 transition-colors ${
+                        isCompleted ? 'bg-[#D46B41]/50' : 'bg-[#8FA0A8]/30'
+                      }`}
+                    />
+                  )}
                   <span
                     className={`text-lg transition-colors ${
                       isCurrent
